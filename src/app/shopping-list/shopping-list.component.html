@@ -1,36 +1,39 @@
 <div class="container-fluid">
-  <div class="row mb-3">
-    <div class="col-md-12 mt-3 text-right">
+  <div class="row mb-4 mt-4">
+    <div class="col-md-12">
       <button (click)="addList()" class="btn btn-primary">
-        Add a List
+        Add a List <i class="fa fa-shopping-cart"></i>
       </button>
     </div>
   </div>
   <div class="row mb-5">
-    <div *ngFor="let list of lists; let listIndex = index;" class="col-md-6 mb-5">
+    <div *ngFor="let list of lists; let listIndex = index;"
+         class="col-md-4 mb-5">
       <div class="row">
         <h3 class="col-md-12">
-          #List {{listIndex + 1}} <i class="text-danger fa fa-window-close"
+          #List {{listIndex + 1}} <i class="text-danger fa fa-trash"
+                                     ngbTooltip="Remove List"
+                                     placement="right"
                                       (click)="removeList(listIndex)"></i>
         </h3>
         <div class="col-md-12">
           <div class="d-flex flex-wrap">
             <input [(ngModel)]="list.listName"
-                   class="form-control w-75"
+                   class="form-control"
                    placeholder="List Name">
           </div>
         </div>
         <div class="col-md-12">
           <div *ngFor="let listItem of list.items; let itemIndex = index" class="row content-center mt-3">
             <div class="col-md-12 d-flex flex-wrap">
-              <div class="form-group">
+              <div class="form-group w-d-60 w-m-50">
                 <input (keydown)="addListItemOnEnter($event, listIndex)"
                        [(ngModel)]="listItem.itemName"
                        class="form-control"
                        placeholder="Item Name"
                        type="text">
               </div>
-              <div class="content-center ml-3 f-24">
+              <div class="content-center justify-content-end w-d-40 w-m-50 f-24">
                 <i (click)="addOrRemoveListItemQuantity(1, listIndex, itemIndex)"
                    class="fa fa-plus-circle"></i>
                 <div class="mx-2 fw-600 quantity-input-wrapper">
