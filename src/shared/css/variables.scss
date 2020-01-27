@@ -1,0 +1,22 @@
+$colors: (
+  primary: #005DFF,
+  accent: #faf8e8,
+  primary-light: lighten(#005DFF, 40%),
+  primary-dark: darken(#005DFF, 40%)
+);
+
+$padding-15: 15px;
+$border-r-15: 15px;
+$desktop: 840px;
+
+@function color($color-name){
+  @return map-get($colors, $color-name)
+};
+
+
+@mixin desktop {
+  // this is a @mixin funtion used here for the desktop version screen
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}

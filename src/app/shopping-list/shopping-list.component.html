@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row mb-3">
+    <div class="col-md-12 mt-3 text-right">
+      <button (click)="addList()" class="btn btn-primary">
+        Add a List
+      </button>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div *ngFor="let list of lists; let listIndex = index;" class="col-md-6 mb-5">
+      <div class="row">
+        <h3 class="col-md-12">
+          #List {{listIndex + 1}} <i class="text-danger fa fa-window-close"
+                                      (click)="removeList(listIndex)"></i>
+        </h3>
+        <div class="col-md-12">
+          <div class="d-flex flex-wrap">
+            <input [(ngModel)]="list.listName"
+                   class="form-control w-75"
+                   placeholder="List Name">
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div *ngFor="let listItem of list.items; let itemIndex = index" class="row content-center mt-3">
+            <div class="col-md-12 d-flex flex-wrap">
+              <div class="form-group">
+                <input (keydown)="addListItemOnEnter($event, listIndex)"
+                       [(ngModel)]="listItem.itemName"
+                       class="form-control"
+                       placeholder="Item Name"
+                       type="text">
+              </div>
+              <div class="content-center ml-3 f-24">
+                <i (click)="addOrRemoveListItemQuantity(1, listIndex, itemIndex)"
+                   class="fa fa-plus-circle"></i>
+                <div class="mx-2 fw-600 quantity-input-wrapper">
+                  <input [(ngModel)]="listItem.quantity"
+                         [min]="0"
+                         [value]="listItem.quantity"
+                         class="form-control"
+                         type="number"></div>
+                <span>
+                <i (click)="addOrRemoveListItemQuantity(-1, listIndex, itemIndex)"
+                   class="fa fa-minus-circle"></i>
+            </span>
+                <button (click)="removeListItem(listIndex, itemIndex)"
+                        *ngIf="(list.items.length - 1) !== itemIndex"
+                        class="btn btn-danger ml-3"
+                        ngbTooltip="Remove Item"
+                        placement="right">
+                  <i class="fa fa-trash"></i>
+                </button>
+                <button (click)="addListItem(listIndex, itemIndex)"
+                        *ngIf="(list.items.length - 1) === itemIndex"
+                        class="btn btn-success ml-3"
+                        ngbTooltip="Add Item"
+                        placement="right">
+                  <i class="fa fa-plus-circle"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

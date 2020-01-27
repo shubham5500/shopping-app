@@ -1,0 +1,66 @@
+@import "../../shared/css/variables";
+section#card{
+  background: white;
+  margin: 20px 20px 20px auto;
+  border-radius: $border-r-15;
+  padding: 20px;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+  width: 40%;
+
+  ul{
+    list-style-type: none;
+    margin: 0; padding: 0;
+    li{
+      margin-bottom: 10px;
+      span{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: color(primary-light);
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      strong{
+        display: inline-block;
+        margin-left: max(40px);
+        margin-top: 10px;
+      }
+    }
+  }
+}
+section#primary{
+  color: #fff;
+  padding: $padding-15;
+  margin: 4em 0 0 4em;
+  text-align: left;
+
+
+  h1{
+    margin-top: 20px;
+    text-transform: uppercase;
+    width: 30%;
+    font-size: 4em;
+    line-height: 0.9em;
+  }
+  p{
+    font-size: 1.4em;
+  }
+
+  a{
+    color: color(primary-dark);
+    border-radius: $border-r-15;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: color(accent);
+    display: block;
+    text-align: center;
+    margin: 50px auto 0 auto;
+    padding: $padding-15;
+
+    @include desktop{
+      display: inline-block;
+      padding: $padding-15 $padding-15 * 4;
+    }
+  }
+}
